@@ -7,6 +7,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     public Animator playerAnim;
 
+    [Header("Mobile Joystick Support")]
+    public Joystick joystick; // Reference to UI Joystick (Attach in Inspector)
+    public bool useJoystick = false; // Toggle joystick support
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -15,13 +19,22 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Get input for movement
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        // Check if using joystick
+        if (useJoystick && joystick != null)
+        {
+            movement.x = joystick.Horizontal;
+            movement.y = joystick.Vertical;
+        }
+        else
+        {
+            // Get input for movement (PC)
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
 
-        //Calling all the funtions Here
-        animationPayer(); //--> This function use to play the player animations(ldle, walk)
-        flipPlayerOnX(); //--> This function is use to flip the player on a x axis
+        // Calling functions
+        animationPlayer();
+        flipPlayerOnX();
     }
 
     void FixedUpdate()
@@ -30,9 +43,9 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = movement.normalized * moveSpeed;
     }
 
-    void animationPayer()
+    void animationPlayer()
     {
-        if (movement.x == 1 || movement.y == 1 || movement.x == -1 || movement.y == -1)
+        if (movement.magnitude > 0) // Player is moving
         {
             playerAnim.SetBool("IsRunning", true);
         }
@@ -41,13 +54,14 @@ public class PlayerMovement : MonoBehaviour
             playerAnim.SetBool("IsRunning", false);
         }
     }
+
     void flipPlayerOnX()
     {
-        if (movement.x <= -1)
+        if (movement.x < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (movement.x >= 1)
+        else if (movement.x > 0)
         {
             transform.localScale = Vector3.one;
         }
