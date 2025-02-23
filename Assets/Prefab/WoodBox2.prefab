@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: 3
+  sp: {fileID: 0}
+  boxColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &7957214246516258344
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -145,3 +145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: 1
+  sp: {fileID: 0}
+  boxColor: {r: 1, g: 1, b: 1, a: 1}
