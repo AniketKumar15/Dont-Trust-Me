@@ -35,4 +35,18 @@ public class GameManager : MonoBehaviour
     {
         SceneManagerLoader.instance.LoadNextLevel();
     }
+
+    // --> This funtion call in the levelPass.cs
+    public void CompleteLevel(int levelIndex)
+    {
+        int currentUnlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+
+        if (levelIndex >= currentUnlockedLevel)
+        {
+            PlayerPrefs.SetInt("UnlockedLevel", levelIndex);
+            PlayerPrefs.Save();
+        }
+
+        Debug.Log("Unlocked Level: " + PlayerPrefs.GetInt("UnlockedLevel"));
+    }
 }

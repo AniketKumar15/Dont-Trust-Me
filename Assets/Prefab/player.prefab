@@ -102,7 +102,7 @@ MonoBehaviour:
   moveSpeed: 5
   playerAnim: {fileID: 0}
   joystick: {fileID: 0}
-  useJoystick: 0
+  useJoystick: 1
 --- !u!50 &6389421189942044643
 Rigidbody2D:
   serializedVersion: 4

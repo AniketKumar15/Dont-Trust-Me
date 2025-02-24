@@ -17,6 +17,7 @@ public class levelPass : MonoBehaviour
         {
             Debug.Log("Level Completed");
             GameManager.instance.gameComplete.SetActive(true);
+            GameManager.instance.CompleteLevel(SceneManagerLoader.instance.getCurrentSceneIndex());
             AudioManager.instance.Play("levelPass");
         }
         else

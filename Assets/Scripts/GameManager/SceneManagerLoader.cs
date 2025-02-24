@@ -28,4 +28,8 @@ public class SceneManagerLoader : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public int getCurrentSceneIndex()
+    {
+       return SceneManager.GetActiveScene().buildIndex;
+    }
 }

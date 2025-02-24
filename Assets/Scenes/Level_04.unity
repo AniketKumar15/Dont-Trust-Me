@@ -2322,7 +2322,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Largest number must be in center and both side of it smaller number.
+  m_Text: Largest number must be in the middle of two smaller number.
 --- !u!222 &1835925031
 CanvasRenderer:
   m_ObjectHideFlags: 0
